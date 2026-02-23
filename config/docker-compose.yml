@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: tournament_postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: tournament_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: root
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
