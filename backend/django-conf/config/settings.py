@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'corsheaders',
-    'tournaments',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'

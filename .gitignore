@@ -3,11 +3,19 @@ config/pgdata/
 .env
 
 # BACKEND (Python / Django)
+<<<<<<< HEAD
 backend/django-conf/venv/
 backend/django-conf/env/
 backend/django-conf/__pycache__/
 backend/django-conf/*.pyc
 backend/django-conf/db.sqlite3
+=======
+backend/venv/
+backend/env/
+backend/__pycache__/
+backend/*.pyc
+backend/db.sqlite3
+>>>>>>> 9e0bf8a35b963e2e1644e32d812d76366d3d1746
 
 # FRONTEND (React)
 frontend/node_modules/
