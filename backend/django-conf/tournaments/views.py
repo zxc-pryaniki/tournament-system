@@ -6,6 +6,10 @@ from .models import Tournament
 from .serializers import TournamentSerializer
 from .permissions import IsAdminRoleOrReadOnly
 
+from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404
+from .serializers import TeamCreateSerializer
+
 # Налаштовуємо базову пагінацію
 class TournamentPagination(PageNumberPagination):
     page_size = 10  # Кількість турнірів на одній сторінці за замовчуванням
@@ -50,3 +54,15 @@ class TournamentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tournament.objects.all()
     serializer_class = TournamentSerializer
     permission_classes = [IsAdminRoleOrReadOnly]
+
+
+class TeamRegisterView(generics.CreateAPIView):
+    serializer_class = TeamCreateSerializer
+    permission_classes = [IsAuthenticated] # Тільки залогінені користувачі!
+
+    def get_serializer_context(self):
+        # Передаємо об'єкт турніру в серіалізатор, щоб він міг перевірити дати
+        context = super().get_serializer_context()
+        tournament_id = self.kwargs.get('tournamentId')
+        context['tournament'] = get_object_or_404(Tournament, id=tournament_id)
+        return context

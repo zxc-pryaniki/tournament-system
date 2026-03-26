@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Tournament, Team, Participant
 
-# Register your models here.
+# Додаємо наші таблиці в адмін-панель
+admin.site.register(Tournament)
+admin.site.register(Team)
+admin.site.register(Participant)
