@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import TournamentListCreateView, TournamentDetailView
-from .views import TeamRegisterView
+from .views import TeamRegisterView, TeamUpdateView
 
 urlpatterns = [
     # POST /api/tournaments/ (і GET для списку)
@@ -10,4 +10,6 @@ urlpatterns = [
     path('tournaments/<int:pk>/', TournamentDetailView.as_view(), name='tournament-detail'),
 
     path('tournaments/<int:tournamentId>/teams/', TeamRegisterView.as_view(), name='team-register'),
+
+    path('teams/<int:pk>/', TeamUpdateView.as_view(), name='team-detail'),
 ]
