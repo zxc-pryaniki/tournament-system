@@ -1,0 +1,14 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+.env
+
+# React / Node
+node_modules/
+dist/
+.vite/
+
+# System
+.DS_Store
+config/pgdata/
