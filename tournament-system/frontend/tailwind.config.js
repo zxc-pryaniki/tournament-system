@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // Це каже Tailwind шукати класи у твоїх React-файлах
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
