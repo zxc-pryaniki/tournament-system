@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Контейнер редактора */
+.ql-container.ql-snow {
+  border: none !important;
+  min-height: 200px;
+  font-size: 14px;
+}
+
+/* Тулбар */
+#toolbar-bottom {
+  border-top: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  display: flex;
+  align-items: center;
+  height: 44px; /* Фіксована висота, щоб нічого не стрибало */
+  padding: 0 12px;
+}
+
+/* Стилізація вибору розміру (цифри) */
+.ql-snow .ql-picker.ql-size {
+  width: 60px !important;
+  height: 30px !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  background-color: white !important;
+  margin-right: 12px !important;
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-label {
+  padding-left: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  outline: none !important;
+}
+
+/* Відображення цифри в полі */
+.ql-snow .ql-picker.ql-size .ql-picker-label::before {
+  content: attr(data-value) !important;
+}
+
+/* ГОЛОВНЕ: Випадання списку ВГОРУ */
+.ql-snow .ql-picker-options {
+  top: auto !important;
+  bottom: 100% !important;
+  margin-bottom: 10px !important;
+  background-color: white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.1) !important;
+  padding: 8px !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Колір іконок */
+.ql-snow .ql-stroke { stroke: #64748b !important; }
+.ql-snow .ql-fill { fill: #64748b !important; }
+
+/* Прибираємо стандартний overflow, щоб меню було видно */
+.overflow-visible-important {
+  overflow: visible !important;
+}
