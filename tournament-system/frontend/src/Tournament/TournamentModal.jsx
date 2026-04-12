@@ -14,10 +14,28 @@ const TournamentModal = ({ isOpen, onClose }) => {
 
     if (!isOpen) return null;
 
-    const handleCreate = () => {
+    const handleCreate = async () => {
         setIsSubmitted(true);
         if (maxTeams > 0) {
-            console.log("Турнір створюється...");
+            try {
+                console.log("Відправка даних у Docker...");
+                const response = await fetch('http://localhost:8000/api/tournaments/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: "Турнір з фронтенду", 
+                        description: description,
+                        max_teams: maxTeams,
+                        status: "published"
+                    }),
+                });
+                if (response.ok) {
+                    console.log("Успіх! Дані в pgAdmin");
+                    onClose();
+                }
+            } catch (error) {
+                console.error("Помилка мережі:", error);
+            }
         }
     };
 
@@ -46,7 +64,7 @@ const TournamentModal = ({ isOpen, onClose }) => {
                                     <span className="ql-formats">
                                         <select className="ql-size">
                                             <option value="small">Small</option>
-                                            <option selected>Normal</option>
+                                            <option>Normal</option>
                                             <option value="large">Large</option>
                                             <option value="huge">Huge</option>
                                         </select>
