@@ -1,0 +1,251 @@
+/* --- БАЗОВІ ЗМІННІ --- */
+:root {
+    --accent: #333;
+    --radius: 14px;
+    --shadow: 0 8px 28px rgba(0,0,0,0.12);
+    --glass: rgba(255,255,255,0.88);
+}
+
+/* --- ГЛОБАЛЬНІ СКИДАННЯ (ДЛЯ VITE ТА FIREFOX) --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* display: flex; тут більше немає, щоб не ламати інші сторінки */
+}
+
+/* Прибираємо системні обідки фокусу у всіх браузерах */
+*:focus {
+    outline: none !important;
+}
+
+/* Хак для Mozilla Firefox, щоб прибрати пунктирні рамки всередині кнопок */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+}
+
+/* --- ГОЛОВНИЙ КОНТЕЙНЕР СТОРІНКИ ЛОГІНУ --- */
+/* Саме цей клас тепер відповідає за ідеальне центрування форми по центру екрану */
+.login-page {
+    font-family: "Inter", system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: #f5f6f8;
+    margin: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* --- КАРТКА ФОРМИ (СКЛОМОРФІЗМ) --- */
+.form-container {
+    background: var(--glass);
+    backdrop-filter: blur(6px);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 360px;
+    padding: 30px 40px 40px;
+    box-sizing: border-box;
+    position: relative;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 0;
+    font-weight: 600;
+}
+
+/* --- ЕЛЕМЕНТИ ВВОДУ --- */
+.input-group {
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--accent);
+}
+
+/* --- ІКОНКА ОКА ДЛЯ ПАРОЛЯ --- */
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    color: #999;
+}
+
+/* --- ПОМИЛКИ ВАЛІДАЦІЇ ТА API --- */
+.error-text {
+    color: #e53935;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+.api-error-alert {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1px solid #ef9a9a;
+}
+
+/* --- КНОПКИ --- */
+.btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: background .15s, color .15s;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #555;
+}
+
+.btn-primary:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+/* --- ПОСИЛАННЯ НА РЕЄСТРАЦІЮ --- */
+.register-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* --- ВЕРХНІ ПЕРЕМИКАЧІ (МОВА ТА ТЕМА) --- */
+.top-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.lang-select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: var(--glass);
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.theme-toggle-btn {
+    background: rgba(0,0,0,0.05);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: all 0.3s;
+}
+
+/* --- ТЕМНА ТЕМА (DARK MODE) --- */
+.dark-theme {
+    background: #1a1a1a;
+    color: #f0f0f0;
+}
+
+.dark-theme .form-container {
+    background: rgba(40,40,40,0.88);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+}
+
+.dark-theme .form-title, 
+.dark-theme .input-group label { 
+    color: #f0f0f0; 
+}
+
+.dark-theme input {
+    background: #333;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+.dark-theme input:focus {
+    border-color: #888;
+}
+
+.dark-theme .theme-toggle-btn { 
+    color: #f0f0f0; 
+    background: rgba(255,255,255,0.1); 
+}
+
+.dark-theme .lang-select { 
+    background: rgba(40,40,40,0.88); 
+    color: #f0f0f0; 
+    border-color: rgba(255,255,255,0.2); 
+}
+
+.dark-theme .register-link { 
+    color: #aaa; 
+}
